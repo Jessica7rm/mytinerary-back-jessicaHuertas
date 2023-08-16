@@ -1,11 +1,11 @@
-const {Schema, model, Types} = require('mongoose')
+const { Schema, model } = require('mongoose')
 
 const schemaCity = new Schema({
     place: {
         type: String,
         required: true,
     },
-    countri: {
+    country: {
         type: String,
         required: true,
     },
