@@ -12,7 +12,10 @@ const schemaCity = new Schema({
     image: {
         type: String,
         required: true,
-    }
+    },
+    description: { 
+        type: String, 
+        required: true }
 })
 
 const City = model("City", schemaCity)
