@@ -15,7 +15,7 @@ const getItineraries = async (req, res) => {
 const getItinerariesCity = async (req, res) => {
     let {cityId} = req.params
     try {
-        let filTinerary = await Itinerary.find({ id_city: cityId}).populate('id_city')
+        let filTinerary = await Itinerary.find({ id_city: cityId})
         res.status(200).json(filTinerary)
         console.log(filTinerary);
     } catch (err) {
@@ -50,8 +50,9 @@ const addItinerary = async (req, res) => {
 const updateItinerary = async (req, res) => {
     try {
         let newData = {
+            title: req.body.title,
             img: req.body.img,
-            name: req.body.name,
+            user: req.body.name,
             price: req.body.price,
             duration: req.body.duration,
             likes: req.body.likes,
