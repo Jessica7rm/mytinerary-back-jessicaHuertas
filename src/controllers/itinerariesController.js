@@ -52,7 +52,7 @@ const updateItinerary = async (req, res) => {
         let newData = {
             title: req.body.title,
             img: req.body.img,
-            user: req.body.name,
+            name: req.body.name,
             price: req.body.price,
             duration: req.body.duration,
             likes: req.body.likes,
