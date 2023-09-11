@@ -13,6 +13,7 @@ const register = async (req, res) => {
 
         res.status(200).json({
             message: "User created successfully",
+            token: req.token,
             userCreate
         })
 
@@ -23,23 +24,51 @@ const register = async (req, res) => {
 
 const login = async (req, res) => {
     try {
-        const { password, email } = req.body
-        const userFounded = await User.findOne({ email: email})
- 
-        if(userFounded){
- 
-            if(verifyPassword(password, userFounded.password)){
-               return res.status(200).json({ message: "successfully logged in", user: userFounded})
-            }else{
-               return res.status(400).json({ message: "wrong password"})
+        res.status(200).json({
+            message: 'Successfully logged in',
+            token: req.token,
+            user: {
+                name: req.user.name,
+                lastname: req.user.lastname,
+                email: req.user.email,
+                url_img: req.user.url_img,
+                country: req.user.country,
+                _id: req.user._id,
+                
             }
-
-        }else{
-            res.status(400).json({ message: "user not found" })
-        }
+        })
     } catch (err) {
         res.status(400).json({ message: err.message })
     }
 }
 
-module.exports = { register, login }
+const authenticated = async (req, res) => {
+    try {
+        res.status(200).json({
+            message: 'Successfully authenticated',
+            token: req.token,
+            user: {
+                name: req.user.name,
+                lastname: req.user.lastname,
+                email: req.user.email,
+                _id: req.user._id,
+                url_img: req.user.url_img,
+                country: req.user.country,
+            }
+        })
+    } catch (err) {
+        res.status(400).json({ message: err.message })
+    }
+}
+
+const logout = async (req, res) => {
+    try {
+
+        res.status(200).json({ message: 'logged out', token: req.token })
+
+    } catch (err) {
+        res.status(500).json({ message: console.log(err.massage) })
+    }
+}
+
+module.exports = { register, login, authenticated, logout }
