@@ -51,7 +51,6 @@ const authenticated = async (req, res) => {
                 name: req.user.name,
                 lastname: req.user.lastname,
                 email: req.user.email,
-                _id: req.user._id,
                 url_img: req.user.url_img,
                 country: req.user.country,
             }

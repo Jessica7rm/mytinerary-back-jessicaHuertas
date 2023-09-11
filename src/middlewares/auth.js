@@ -7,7 +7,7 @@ const { Strategy, ExtractJwt } = require('passport-jwt');
 const passportVerificator = passport.use(
     new Strategy({
         jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-        secretOrKey: "keySecret"
+        secretOrKey: process.env.SECRET_KEY
     }, async (payload, done) => {
 
         try {
@@ -67,7 +67,7 @@ const verifyUserExists = async (req, res, next) => {
 const generateToken = (req, res, next) => {
     try {
 
-        let secretkey = "keySecret"
+        let secretkey = process.env.SECRET_KEY
         let token = jwt.sign({ email: req.body.email }, secretkey, { expiresIn: 60 * 4 })
         req.token = token
         next()
