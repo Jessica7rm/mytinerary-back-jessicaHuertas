@@ -21,4 +21,8 @@ router.delete("/itinerary/:id", deleteItinerary)
 router.put("/itinerary/:id", updateItinerary)
 
 
+const authRouter = require('./auth')
+
+router.use("/user", authRouter)
+
 module.exports = router
