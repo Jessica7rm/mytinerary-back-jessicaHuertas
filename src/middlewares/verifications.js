@@ -15,7 +15,7 @@ const userSchema = Joi.object({
         'string.max': "Maximum 15 characters", 
         'any.required': "Please enter your password",
     }),
-    url_img: Joi.string().required(),
+    url_img: Joi.string().required().uri(),
     country: Joi.string().required().min(3).max(20),
 });
 
