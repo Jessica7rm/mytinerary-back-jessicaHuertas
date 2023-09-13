@@ -8,7 +8,7 @@ const userSchema = Joi.object({
         'string.empty': "Please enter your email",
         'any.required': "Please enter your email",
     }),
-    password: Joi.string().alphanum().min(6).max(15).required().messages({
+    password: Joi.string().alphanum().min(6).max(30).required().messages({
         'string.password': "Please enter an valid password",
         'string.empty': "Please enter your password",
         'string.min': "The password required a minimum of 6 characters",
