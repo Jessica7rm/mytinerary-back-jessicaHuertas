@@ -60,7 +60,7 @@ const verifyUserExists = async (req, res, next) => {
         req.user = userFounded;
         next()
     } else {
-        res.status(400).json({ message: "This email is already registered" })
+        res.status(400).json({ message: "This user does not exist, check the email" })
     }
 }
 
