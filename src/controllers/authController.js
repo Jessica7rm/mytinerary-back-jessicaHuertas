@@ -7,7 +7,7 @@ const register = async (req, res) => {
         const userExists = await User.findOne({ email: payload.email })
 
         if (userExists) {
-            return res.status(403).json({ massage: "User already exists" })
+            return res.status(403).json({ message: "The user already exists, the email is already registered" })
         }
         const userCreate = await User.create(payload)
 
