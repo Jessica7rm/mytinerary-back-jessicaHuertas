@@ -60,7 +60,7 @@ const verifyUserExists = async (req, res, next) => {
         req.user = userFounded;
         next()
     } else {
-        res.status(400).json({ message: "user not found" })
+        res.status(400).json({ message: "This user does not exist, check the email" })
     }
 }
 
